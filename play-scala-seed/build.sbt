@@ -8,8 +8,11 @@ lazy val root = (project in file(".")).enablePlugins(PlayScala)
 scalaVersion := "2.12.6"
 
 libraryDependencies ++= Seq(
+    evolutions,
+    jdbc,
     guice,
-    "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2" % Test
+    "org.scalatestplus.play" %% "scalatestplus-play" % "3.1.2" % Test,
+    "org.postgresql" % "postgresql" % "42.2.4"
 )
 
 // Adds additional packages into Twirl
