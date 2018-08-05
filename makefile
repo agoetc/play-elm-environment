@@ -2,9 +2,10 @@ build:
 	docker-compose down
 	docker-compose build
 	docker-compose up -d
-	./slick-codegen/sbt.sh gen-tables
+	cd ./slick-codegen; \
+		./sbt.sh gen-tables
 	cd ./play-scala-seed; \
-	elm-package install -y
+		elm-package install -y
 
 up:
 	docker-compose down
