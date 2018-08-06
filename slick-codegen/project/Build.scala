@@ -13,10 +13,11 @@ object myBuild extends Build {
     settings = Project.defaultSettings ++ Seq(
       scalaVersion := "2.11.6",
       libraryDependencies ++= List(
-        "com.typesafe.slick" %% "slick" % "3.0.0",
-        "com.typesafe.slick" %% "slick-codegen" % "3.0.0",
+        "com.typesafe.slick" %% "slick" % "3.2.0",
+        "com.typesafe.slick" %% "slick-codegen" % "3.2.0",
         "org.slf4j" % "slf4j-nop" % "1.6.4",
-        "org.postgresql" % "postgresql" % "42.2.4"
+        "org.postgresql" % "postgresql" % "42.2.4",
+        "com.typesafe" % "config" % "1.3.1"
       ),
       slick <<= slickCodeGenTask, // register manual sbt command
       sourceGenerators in Compile <+= slickCodeGenTask // register automatic code generation on every compile, remove for only manual use
@@ -31,7 +32,7 @@ object myBuild extends Build {
     val username = "testuser"
     val password = "testpass"
     val jdbcDriver = "org.postgresql.Driver"
-    val slickDriver = "slick.driver.PostgresDriver"
+    val slickDriver = "slick.jdbc.PostgresProfile"
     val pkg = "models"
     toError(r.run("slick.codegen.SourceCodeGenerator", cp.files, Array(slickDriver, jdbcDriver, url, outputDir, pkg, username, password), s.log))
     val fname = outputDir + "/models/Tables.scala"
