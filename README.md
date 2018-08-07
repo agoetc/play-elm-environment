@@ -1,10 +1,10 @@
 # play-elm-environment
 
-### 初回
-`make setup`
-
-### ２回目以降
+### db起動
 `make up`
+
+### codegen, elm-package install
+`make build`
 
 ### 停止
 `make down`
